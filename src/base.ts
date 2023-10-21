@@ -10,7 +10,7 @@ export abstract class BaseClient {
     this.apiKey = config.apiKey
   }
 
-  protected request(method: string /** TODO: method types */) {
+  public request(method: string /** TODO: method types */) {
     return fetch(this.url, {
       method,
       headers: {

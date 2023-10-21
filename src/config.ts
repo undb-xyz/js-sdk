@@ -22,7 +22,7 @@ export interface IUndbSDKConfig {
    * 	"Content-Type": "application/json"
    * }
    */
-  headers: Record<string, string>
+  headers?: Record<string, string>
 
   /**
    * fetch

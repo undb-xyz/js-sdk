@@ -11,12 +11,16 @@ export abstract class BaseClient {
     this.fetch = config.fetch ?? require('isomorphic-fetch')
   }
 
-  public request(method: string /** TODO: method types */) {
-    return this.fetch(this.url, {
+  private getEndpoint(endpoint: string) {
+    return this.url + endpoint
+  }
+
+  public request(method: string /** TODO: method types */, endpoint: string) {
+    return this.fetch(this.getEndpoint(endpoint), {
       method,
       headers: {
         'x-undb-api-token': this.apiKey,
       },
-    })
+    }).then((res) => res.json())
   }
 }

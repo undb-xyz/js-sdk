@@ -1,12 +1,14 @@
-import { describe, it, expect } from 'bun:test'
-import { one, two } from '../src'
+import { describe, it } from 'bun:test'
+import { Client } from '../src'
 
-describe('should', () => {
-  it('export 1', () => {
-    expect(one).toBe(1)
-  })
+describe('should get table', () => {
+  it('get records', async () => {
+    const api = new Client({
+      baseURL: 'http://0.0.0.0:3000',
+      apiKey: 'qGgIxkKuIAKFG6y1cbtaL1w88QyeAa7trpw_O2P9',
+    })
 
-  it('export 2', () => {
-    expect(two).toBe(2)
+    const results = await api.table('tblk4h9pgm7').record.getMany()
+    console.log(results)
   })
 })

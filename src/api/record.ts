@@ -1,7 +1,12 @@
+import type { BaseClient } from '../base'
 import { BaseAPI } from './base'
 
 export class RecordAPI extends BaseAPI {
-  get(recordId: string) {
-    return this.client.request('GET')
+  constructor(private readonly tableId: string, client: BaseClient) {
+    super(client)
+  }
+
+  getMany() {
+    return this.client.request('GET', `/api/v1/openapi/tables/${this.tableId}/records`)
   }
 }

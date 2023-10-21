@@ -1,6 +1,8 @@
-import { RecordAPI } from './api/record'
+import { TableAPI } from './api/table'
 import { BaseClient } from './base'
 
 export class Client extends BaseClient {
-  public readonly record = new RecordAPI(this)
+  public table(tableId: string) {
+    return new TableAPI(tableId, this)
+  }
 }

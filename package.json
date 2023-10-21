@@ -24,8 +24,12 @@
   "bugs": "https://github.com/wobsoriano/pkg-name/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
+    "@types/isomorphic-fetch": "^0.0.38",
     "bun-plugin-dts": "^0.1.0",
     "bun-types": "^1.0.1",
     "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^3.0.0"
   }
 }

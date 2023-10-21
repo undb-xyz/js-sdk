@@ -14,7 +14,7 @@ export abstract class BaseClient {
     return fetch(this.url, {
       method,
       headers: {
-        'x-undb-api-key': this.apiKey,
+        'x-undb-api-token': this.apiKey,
       },
     })
   }

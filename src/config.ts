@@ -23,4 +23,9 @@ export interface IUndbSDKConfig {
    * }
    */
   headers: Record<string, string>
+
+  /**
+   * fetch
+   */
+  fetch?: typeof fetch
 }

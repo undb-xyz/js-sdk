@@ -1,26 +1,24 @@
+import ky, { type Options } from 'ky'
 import { IUndbSDKConfig } from './config'
 
 export abstract class BaseClient {
-  private readonly url: string
-  private readonly apiKey: string
-  private readonly fetch: typeof fetch
+  private readonly ky: typeof ky
 
   constructor(config: IUndbSDKConfig) {
-    this.url = config.baseURL || 'http://localhost:3000'
-    this.apiKey = config.apiKey
-    this.fetch = config.fetch ?? require('isomorphic-fetch')
-  }
-
-  private getEndpoint(endpoint: string) {
-    return this.url + endpoint
-  }
-
-  public request(method: string /** TODO: method types */, endpoint: string) {
-    return this.fetch(this.getEndpoint(endpoint), {
-      method,
+    this.ky = ky.create({
+      prefixUrl: config.baseURL || 'http://localhost:3000',
+      fetch: config.fetch ?? require('isomorphic-fetch'),
       headers: {
-        'x-undb-api-token': this.apiKey,
+        'Content-Type': 'application/json',
+        'x-undb-api-token': config.apiKey,
       },
-    }).then((res) => res.json())
+    })
+  }
+
+  public async request(method: Options['method'], endpoint: string, options?: { body: object }) {
+    return this.ky(endpoint, {
+      method,
+      body: options?.body ? JSON.stringify(options.body) : undefined,
+    }).json()
   }
 }

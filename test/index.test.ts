@@ -24,8 +24,13 @@ describe('should get table', () => {
       console.log(results)
     })
 
-    it('get single result', async () => {
+    it('get single record', async () => {
       const result = await table.record.getOne('rec78ri5r2y')
+      console.log(result)
+    })
+
+    it('create record', async () => {
+      const result = await table.record.create({ values: { Item: 'hellofrombun' } })
       console.log(result)
     })
   })

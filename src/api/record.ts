@@ -1,6 +1,6 @@
 import type { BaseClient } from '../base'
 import { BaseAPI } from './base'
-import { ICreateRecordDTO } from './types'
+import { ICreateRecordDTO, IUpdateRecordDTO } from './types'
 
 export class RecordAPI extends BaseAPI {
   constructor(private readonly tableId: string, client: BaseClient) {
@@ -15,8 +15,12 @@ export class RecordAPI extends BaseAPI {
     return this.client.request('get', `api/v1/openapi/tables/${this.tableId}/records`)
   }
 
-  create(dto: ICreateRecordDTO) {
+  createOne(dto: ICreateRecordDTO) {
     return this.client.request('post', `api/v1/openapi/tables/${this.tableId}/records`, { body: dto })
+  }
+
+  updateOne({ id, values }: IUpdateRecordDTO) {
+    return this.client.request('patch', `api/v1/openapi/tables/${this.tableId}/records/${id}`, { body: { values } })
   }
 
   deleteOne(recordId: string) {

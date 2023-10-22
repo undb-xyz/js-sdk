@@ -14,6 +14,7 @@ describe('should get table', () => {
 
   describe('records api', () => {
     let table: TableAPI
+    const recordId = 'rec78ri5r2y'
 
     beforeAll(() => {
       table = api.table('tblk4h9pgm7')
@@ -25,17 +26,22 @@ describe('should get table', () => {
     })
 
     it('get single record', async () => {
-      const result = await table.record.getOne('rec78ri5r2y')
+      const result = await table.record.getOne(recordId)
       console.log(result)
     })
 
     it('create record', async () => {
-      const result = await table.record.create({ values: { Item: 'hellofrombun' } })
+      const result = await table.record.createOne({ values: { Item: 'hellofrombun' } })
       console.log(result)
     })
 
     it('duplcaite record', async () => {
-      const result = await table.record.duplicateOne('rec78ri5r2y')
+      const result = await table.record.duplicateOne(recordId)
+      console.log(result)
+    })
+
+    it('update record', async () => {
+      const result = await table.record.updateOne({ id: recordId, values: { Item: 'helloupdatedfrombun' } })
       console.log(result)
     })
   })

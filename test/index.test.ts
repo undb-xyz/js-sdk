@@ -33,5 +33,10 @@ describe('should get table', () => {
       const result = await table.record.create({ values: { Item: 'hellofrombun' } })
       console.log(result)
     })
+
+    it('duplcaite record', async () => {
+      const result = await table.record.duplicateOne('rec78ri5r2y')
+      console.log(result)
+    })
   })
 })

@@ -22,4 +22,8 @@ export class RecordAPI extends BaseAPI {
   deleteOne(recordId: string) {
     return this.client.request('delete', `api/v1/openapi/tables/${this.tableId}/records/${recordId}`)
   }
+
+  duplicateOne(recordId: string) {
+    return this.client.request('post', `api/v1/openapi/tables/${this.tableId}/records/${recordId}`)
+  }
 }

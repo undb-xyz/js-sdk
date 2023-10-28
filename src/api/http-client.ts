@@ -1,12 +1,13 @@
 import ky, { type Options } from 'ky'
-import { IUndbSDKConfig } from './config'
+import { IUndbSDKConfig } from '../config'
+import { DEFAULT_URL } from '../constants'
 
-export abstract class BaseClient {
+export class HttpClient {
   private readonly ky: typeof ky
 
   constructor(config: IUndbSDKConfig) {
     this.ky = ky.create({
-      prefixUrl: config.baseURL || 'http://localhost:3000',
+      prefixUrl: config.baseURL || DEFAULT_URL,
       fetch: config.fetch ?? require('isomorphic-fetch'),
       headers: {
         'Content-Type': 'application/json',

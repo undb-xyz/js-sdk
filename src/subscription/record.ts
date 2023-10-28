@@ -6,12 +6,12 @@ export class RecordSubscription {
     private readonly subscriptionService: SubscriptionService,
   ) {}
 
-  subscribe() {
+  async subscribe() {
     return this.subscriptionService.subscribe(
       "",
-      `/api/tables/${this.tableId}/subscription`,
+      `/api/v1/openapi/tables/${this.tableId}/subscription`,
       (data) => {
-        console.log("wtf");
+        console.log("wtf", data);
       },
     );
   }

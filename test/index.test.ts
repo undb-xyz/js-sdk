@@ -1,12 +1,16 @@
 import { beforeAll, describe, it } from "bun:test";
 import { Client } from "../src";
 import { TableAPI } from "../src/api/table";
+import eventsource from "eventsource";
 
-describe("should get table", () => {
-  let api: Client;
+// @ts-ignore
+global.EventSource = eventsource;
+
+describe("table", () => {
+  let client: Client;
 
   beforeAll(() => {
-    api = new Client({
+    client = new Client({
       baseURL: "http://0.0.0.0:3000",
       apiKey: "qGgIxkKuIAKFG6y1cbtaL1w88QyeAa7trpw_O2P9",
     });
@@ -17,7 +21,8 @@ describe("should get table", () => {
     const recordId = "rec78ri5r2y";
 
     beforeAll(() => {
-      table = api.table("tblk4h9pgm7");
+      table = client.table("tblk4h9pgm7");
+      table.subscription.subscribe();
     });
 
     it("get records", async () => {

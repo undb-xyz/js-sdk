@@ -1,8 +1,14 @@
+import { HttpClient } from './api/http-client'
 import { TableAPI } from './api/table'
-import { BaseClient } from './base'
+import { IUndbSDKConfig } from './config'
 
-export class Client extends BaseClient {
+export class Client {
+  private readonly httpClient: HttpClient
+  constructor(config: IUndbSDKConfig) {
+    this.httpClient = new HttpClient(config)
+  }
+
   public table(tableId: string) {
-    return new TableAPI(tableId, this)
+    return new TableAPI(tableId, this.httpClient)
   }
 }

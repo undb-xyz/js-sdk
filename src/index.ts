@@ -1,2 +1,1 @@
-export { Client } from './client';
-
+export { Undb } from "./client";

@@ -1,14 +1,23 @@
 import { beforeAll, describe, it } from "bun:test";
-import { Client } from "../src";
+import { Undb } from "../src";
 import { TableAPI } from "../src/api/table";
 
 describe("table", () => {
+<<<<<<< Updated upstream
   let client: Client;
+=======
+  let undb: Undb;
+  let table: TableAPI;
+>>>>>>> Stashed changes
 
   beforeAll(() => {
-    client = new Client({
+    undb = new Undb({
       apiKey: "qGgIxkKuIAKFG6y1cbtaL1w88QyeAa7trpw_O2P9",
     });
+<<<<<<< Updated upstream
+=======
+    table = undb.table("tblk4h9pgm7");
+>>>>>>> Stashed changes
   });
 
   describe("records api", () => {

@@ -8,7 +8,11 @@ export class SubscriptionService {
 
   constructor(private readonly config: IUndbSDKConfig) {}
 
-  async subscribe(event: string, url: string, callback: ISubscribeCallback) {
+  async subscribe(
+    matchEvent: (data: any) => boolean,
+    url: string,
+    callback: ISubscribeCallback,
+  ) {
     if (!this.isConnected) {
       this.connect(url);
     }
@@ -17,7 +21,13 @@ export class SubscriptionService {
 
     eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      callback(data);
+      if (matchEvent(data)) {
+        callback(null, data);
+      }
+    };
+
+    eventSource.onerror = (event) => {
+      callback(event, null);
     };
   }
 
@@ -27,7 +37,8 @@ export class SubscriptionService {
 
   connect(url: string) {
     const baseURL = getBaseUrl(this.config);
-    this.eventSource = new EventSource(`${baseURL}/${url}`, {
+    const r = `${baseURL}${url}`;
+    this.eventSource = new EventSource(r, {
       headers: {
         "x-undb-api-token": this.config.apiKey,
       },

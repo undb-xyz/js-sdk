@@ -24,4 +24,4 @@ export interface IDuplidateRecordsDTO {
   ids: string[];
 }
 
-export type ISubscribeCallback = (data: any) => void;
+export type ISubscribeCallback = (err: any, data: any) => void;

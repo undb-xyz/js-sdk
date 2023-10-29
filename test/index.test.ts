@@ -46,4 +46,11 @@ describe('table', () => {
       console.log(result)
     })
   })
+
+  describe('webhook api', () => {
+    it('get webhooks', async () => {
+      const results = await table.webhook.getMany()
+      console.log(results)
+    })
+  })
 })

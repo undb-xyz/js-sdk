@@ -25,13 +25,16 @@
   "bugs": "https://github.com/wobsoriano/pkg-name/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
+    "@types/eventsource": "^1.1.14",
     "@types/isomorphic-fetch": "^0.0.38",
     "bun-plugin-dts": "^0.2.0",
     "bun-types": "^1.0.1",
     "typescript": "^5.1.6"
   },
   "dependencies": {
+    "eventsource": "^2.0.2",
     "isomorphic-fetch": "^3.0.0",
-    "ky": "^1.1.0"
+    "ky": "^1.1.0",
+    "ts-pattern": "^5.0.5"
   }
 }

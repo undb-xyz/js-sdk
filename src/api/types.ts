@@ -1,25 +1,27 @@
 export interface ICreateRecordDTO {
-  id?: string
-  values: Record<string, any>
+  id?: string;
+  values: Record<string, any>;
 }
 
 export interface IUpdateRecordDTO {
-  id: string
-  values: Record<string, any>
+  id: string;
+  values: Record<string, any>;
 }
 
 export interface IDeleteRecordsDTO {
-  ids: string[]
+  ids: string[];
 }
 
 export interface ICreateRecordsDTO {
-  records: ICreateRecordDTO[]
+  records: ICreateRecordDTO[];
 }
 
 export interface IUpdateRecordsDTO {
-  records: IUpdateRecordDTO[]
+  records: IUpdateRecordDTO[];
 }
 
 export interface IDuplidateRecordsDTO {
-  ids: string[]
+  ids: string[];
 }
+
+export type ISubscribeCallback = (err: any, data: any) => void;

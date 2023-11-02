@@ -1,10 +1,10 @@
 import { Undb } from "../src/client";
 
 const client = new Undb({
-  apiKey: "qGgIxkKuIAKFG6y1cbtaL1w88QyeAa7trpw_O2P9",
+  apiKey: process.env.API_KEY ?? "",
 });
 
-const table = client.table("tblk4h9pgm7");
+const table = client.table(process.env.TABLE_ID ?? '');
 
 await table.subscription.subscribe("record.created", (err, data) => {
   if (err) {

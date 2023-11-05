@@ -57,5 +57,10 @@ describe("table", () => {
       const results = await table.webhook.getOne("whkpsx7re7d");
       console.log(results);
     });
+
+    it.skip("should delete one webhook by id", async () => {
+      const results = await table.webhook.deleteOne("whkpsx7re7d");
+      console.log(results);
+    });
   });
 });

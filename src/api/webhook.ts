@@ -19,4 +19,11 @@ export class WebhookAPI {
       `api/v1/openapi/tables/${this.tableId}/webhooks/${id}`,
     );
   }
+
+  deleteOne(id: string) {
+    return this.httpClient.request(
+      "delete",
+      `api/v1/openapi/tables/${this.tableId}/webhooks/${id}`,
+    );
+  }
 }

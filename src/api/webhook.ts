@@ -12,4 +12,11 @@ export class WebhookAPI {
       `api/v1/openapi/tables/${this.tableId}/webhooks`,
     );
   }
+
+  getOne(id: string) {
+    return this.httpClient.request(
+      "get",
+      `api/v1/openapi/tables/${this.tableId}/webhooks/${id}`,
+    );
+  }
 }

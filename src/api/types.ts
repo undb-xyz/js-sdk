@@ -25,3 +25,16 @@ export interface IDuplidateRecordsDTO {
 }
 
 export type ISubscribeCallback = (err: any, data: any) => void;
+
+export type IWebhookTargetType = "table";
+
+export interface IWebbook {
+  id: string;
+  name: string;
+  url: string;
+  method: "POST" | "PATCH";
+  enabled: boolean;
+  target: IWebhookTargetType;
+  headers?: Record<string, string>;
+  filter?: any;
+}

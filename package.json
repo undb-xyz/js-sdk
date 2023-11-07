@@ -26,7 +26,7 @@
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
     "@types/eventsource": "^1.1.14",
-    "@types/isomorphic-fetch": "^0.0.38",
+    "@types/isomorphic-fetch": "^0.0.39",
     "bun-plugin-dts": "^0.2.0",
     "bun-types": "^1.0.1",
     "typescript": "^5.1.6"
